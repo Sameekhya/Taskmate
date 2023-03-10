@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import Header from './Components/Header';
-import ShowTask from './Components/ShowTask'; 
+
 import Addtask from './Components/Addtask';
+import ShowTask from './Components/ShowTask';
+
 
 function App() {
 
+const [taskList,setTaskList] = useState([]);
 
+console.log("in app ",taskList)
   return (
     <div className="App">
       <Header/>
-      <Addtask />
-      <ShowTask/>
+      <Addtask taskList={taskList} setTaskList={setTaskList}/>
+      <ShowTask taskList={taskList} setTaskList={setTaskList}/>
     </div>
   );
 }

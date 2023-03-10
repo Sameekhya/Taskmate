@@ -1,13 +1,7 @@
 import React from "react";
 
-function ShowTask({taskList}) {
-  const tasks = 
-  [
-    { id: 10001, name: "TASK A", time: "2:00 AM" },
-    { id: 10002, name: "TASK B", time: "2:00 AM" },
-    { id: 10003, name: "TASK C", time: "2:00 AM" },
-    { id: 10004, name: "TASK D", time: "2:00 AM" },
-  ];
+function ShowTask({taskList,setTaskList}) {
+  
   return (
     <section className="showTask">
       <div className="head">
@@ -15,12 +9,11 @@ function ShowTask({taskList}) {
           <span className="title">Todo</span>
           <span className="count">0</span>
         </div>
-        <button className="clearAll">Clear All</button>
+        <button className="clearAll" onClick={()=> setTaskList([])}>Clear All</button>
       </div>
       <ul>
-      {tasks.map((task) =>
-        {
-        return ( 
+      {taskList.map((task) =>
+         ( 
           <li key={task.id}>
           <p>
             <span className="name"> {task.name}</span>
@@ -30,7 +23,7 @@ function ShowTask({taskList}) {
           <i className="bi bi-trash"></i>
         </li>
         )
-      })}
+      )}
        
         
       </ul>
