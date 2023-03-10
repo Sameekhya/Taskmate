@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 
 import Addtask from "./Components/Addtask";
 import ShowTask from "./Components/ShowTask";
+import "./App.css"
 
 function App() {
   const [taskList, setTaskList] = useState(JSON.parse(localStorage.getItem("taskList")) || []);
@@ -15,7 +16,9 @@ function App() {
   
 
   return (
+   
     <div className="App">
+    <div className="container">
       <Header />
       <Addtask 
       taskList={taskList} 
@@ -27,6 +30,7 @@ function App() {
       setTaskList={setTaskList}
       task={task}
       setTask={setTask}/>
+    </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./ShowTask.css";
 
 function ShowTask({ taskList, setTaskList, task, setTask }) {
   const handleEdit = (id) => {

@@ -1,6 +1,7 @@
 import Logo from "../assets/logo.svg";
 import React, { useEffect, useState } from "react";
-import "../index.css";
+// import "../index.css";
+import "./Header.css"
 
 const Header = () => {
   const [theme, setTheme] = useState("light");
