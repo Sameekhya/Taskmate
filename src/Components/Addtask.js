@@ -1,13 +1,23 @@
 import React from "react";
 
 
-function Addtask({ taskList, setTaskList }) 
+function Addtask({ taskList, setTaskList,task,setTask }) 
 {
   const handleSubmit = (e) => {
     e.preventDefault();
-    const date = new Date();
-    console.log(date);
-    console.log(taskList);
+    if(task.id){
+      const date = new Date();
+      const updatedTaskList = taskList.map((todo) => (
+        todo.id === task.id ? {id:task.id, name:task.name, time: `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`} : {id: todo.id, name:todo.name, time:todo.time}
+      ))
+      
+      setTaskList(updatedTaskList)
+      setTask({})
+      
+      
+    }else{
+      const date = new Date();
+
     const newTask = 
       {
         id: date.getTime(),
@@ -16,8 +26,10 @@ function Addtask({ taskList, setTaskList })
       }
     
     setTaskList([...taskList, newTask]);
-    console.log({ newTask });
-    e.target.task.value="";
+   
+    setTask({})
+    }
+    
   };
   return (
     <div>
@@ -29,8 +41,11 @@ function Addtask({ taskList, setTaskList })
             autoComplete="off"
             placeholder="addtask"
             maxLength="25"
+            value={task.name || ""}
+            onChange ={
+              e=> setTask({...task, name:e.target.value})}
           />
-          <button type="submit">Add</button>
+          <button type="submit">{task.id?"Update" : "Add"}</button>
         </form>
       </section>
      
